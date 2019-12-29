@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width,initial scale=1" />
+
+    <link href="~/content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/content/style.css" rel="stylesheet" />
+    <link href="~/content/font/font-awesome.min.css" rel="stylesheet" />
+
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <!--start navbar-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle collapsed"  data-toggle="collapse"
+                        data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="~/Home" class="navbar-brand">
+                    <img src="~/Images/if_76_2529998.png" style="width:50px;height:50px;" />
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                       
+                        <a href="~/Home">
+                            <i class="glyphicon glyphicon-home"></i>
+                        الرئيسية</a>
+                        
+                    </li>
+                  
+                    <li>
+                        <a href="~/Home/About">حول الموقع
+                            <i class="glyphicon glyphicon-exclamation-sign"></i></a>
+                        
+                    </li>
+                    <li>
+                        <a href="~/Home/contact">اتصل بنا
+                            <i class="glyphicon glyphicon-earphone"></i></a>
+                        
+                    </li>
+                    <li>
+                       @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+                       {
+                        <input type="text" name="searchName" id="searchName" placeholder="أبحث هنا.." />
+
+                       }
+                           
+
+                    </li>
+
+                </ul>
+                @Html.Partial("~/Views/test/_login.cshtml")
+            </div>
+        </div>
+
+    </nav>
+    <!--end navbar-->
+
+    <div class="container">
+        <div class="row " style="min-height:550px;">
+            @RenderBody()
+        </div>
+    </div>
+    <!-- start footer-->
+    <footer class="myfooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>
+                        <i class="glyphicon glyphicon-question-sign"></i></a>
+                        من نحن
+                       
+                    </h3>
+                    <p>
+                        التوظيف. نعمل على دعم توظيف الشباب في سائر أنحاء العالم العربي وذلك من خلال تطوير برامج وآليات لربط الباحثين عن عمل بالوظائف، وتزويد الشباب بالمهارات
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h3>
+                        <i class="glyphicon glyphicon-globe"></i></a>
+                        روابط هامة
+
+                    </h3>
+                    <ul>
+                        <li><a href="#">وظائف للقطاع العام </a></li>
+                        <li><a href="#">وظائف للقطاع الخاص </a></li>
+                        <li><a href="#">وظائف خارج البلاد </a></li>
+                        <li><a href="#">وظائف متنوعة </a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>
+                       <a><i class="glyphicon glyphicon-earphone"></i></a>
+                        تواصل معنا
+
+                    </h3>
+                    <ul>
+                        <li><a href="#"> صفحتنا علي الفيس بوك <i class="fa fa-facebook-official"></i></a></li>
+                        <li><a href="#">صفحتنا علي التويتر </a></li>
+                        <li><a href="#">شاهدنا علي اليويتوب </a></li>
+                        <li><a href="#">اترك لنا رسالة </a></li>
+
+                    </ul>
+                </div>
+            </div>
+            
+
+        </div>
+        <div class="subfooter">
+            <p>جميع الحقوق محفوظه لموقعنا-2018</p>
+        </div>
+    </footer>
+
+
+    <!-- end footer-->
+  
+    <script src="~/scriptes/jquery.js"></script>
+    <script src="~/scriptes/bootstrap.min.js"></script>
+
+    @RenderSection("scriptes",required:false)
+
+
+</body>
+</html>

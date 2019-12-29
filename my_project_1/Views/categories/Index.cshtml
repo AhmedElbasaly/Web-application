@@ -1,0 +1,40 @@
+﻿@model IEnumerable<my_project_1.Models.category>
+
+@{
+    ViewBag.Title = "أنواع الوظائف";
+    Layout = "~/Views/_main_LayoutPage1.cshtml";
+}
+
+<h2>أنواع الوظائف</h2>
+
+<p>
+    @Html.ActionLink("انشاء الان", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.categoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.categoryDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.categoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.categoryDescription)
+        </td>
+        <td>
+            @Html.ActionLink("تعديل", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("تفاصيل", "Details", new { id=item.Id }) |
+            @Html.ActionLink("حذف", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

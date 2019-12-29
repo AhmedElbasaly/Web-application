@@ -1,0 +1,46 @@
+﻿
+
+@{
+    ViewBag.Title = "موافق";
+    Layout = "~/Views/_main_LayoutPage1.cshtml";
+}
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>التقدم الي الوظيفة</h4>
+        <div>
+            @{ 
+                if (ViewBag.Result!=null)
+                {
+                    <h3 class="btn btn-danger" >@ViewBag.Result</h3>
+                }
+            }
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Massage", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextArea("Massage", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("Massage", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="تأكيد" class="btn btn-default" />
+            </div>
+        </div>
+   
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

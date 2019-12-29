@@ -1,0 +1,41 @@
+﻿@model my_project_1.Models.category
+
+@{
+    ViewBag.Title = "حذف";
+    Layout = "~/Views/_main_LayoutPage1.cshtml";
+}
+
+<h2>حذف</h2>
+
+<h3>هل انت متأكد من هذف هذا العنصر</h3>
+<div>
+    <h4>النوع</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.categoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.categoryDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categoryDescription)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-default" /> |
+            @Html.ActionLink("العوده الي القائمة", "Index")
+        </div>
+    }
+</div>

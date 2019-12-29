@@ -1,0 +1,52 @@
+﻿@model my_project_1.Models.Job
+
+@{
+    ViewBag.Title = "التفاصيل الوظيفة";
+    Layout = "~/Views/_main_LayoutPage1.cshtml";
+}
+
+<h2>التفاصيل</h2>
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.category.categoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category.categoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Jobtital)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jobtital)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Jobcontent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jobcontent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intJobimage)
+        </dt>
+
+        <dd>
+            <img src="~/uploads/@Html.DisplayFor(model => model.intJobimage)"
+                 class="thumnail" style="width:120px;height:120px;" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("التقدم الي الوظيفة", "Edit", new { id = Model.Id },new {@class="btn btn-success" }) 
+    @Html.ActionLink("العودة الي الصفحة الرئيسية", "Index", new { @class = "btn btn-default" })
+</p>

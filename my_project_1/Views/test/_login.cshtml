@@ -1,0 +1,96 @@
+﻿@using Microsoft.AspNet.Identity
+@using WebApplication1.Models;
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        var db = new ApplicationDbContext();
+        var UserId = User.Identity.GetUserId();
+        var CurrentUser = db.Users.Where(a => a.Id == UserId).SingleOrDefault();
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>مرحبا بك يا:@CurrentUser.UserName</strong>
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <p class="text-center">
+                                        <span class="glyphicon glyphicon-user image-size"></span>
+                                    </p>
+                                </div>
+                                <div class="col-lg-8">
+                                    <p class="text-right">
+                                        <strong>
+                                            @CurrentUser.UserName
+                                        </strong>
+                                    </p>
+                                    @if (CurrentUser.usertype == "الناشرون")
+                                    {
+                                        <a href="~/Home/GetJobByPublisher" class="btn btn-success btn-block">الوظائف التي نشرتها</a>
+                                        <a href="~/Jobs/Create" class="btn btn-success btn-block">نشر وظيفة جديدة</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="~/Home/GetJobUser" class="btn btn-success btn-block">الوظائف المقدم اليها</a>
+                                    }
+                                    <a href="~/Account/EditeProfile" class="btn btn-primary btn-block">تعديل الحساب</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li class="divider"></li>
+                        <li>
+                        <div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <p>
+                                        <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger">تسجيل الخروج</a>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                        
+                </ul>
+                </li>
+       
+                
+
+
+            @*<li>
+                @Html.ActionLink("مرحبا بك: " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">تسجيل الخروج</a></li>*@
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="~/Account/SmartLogin">
+                <i class="glyphicon glyphicon-user"></i>
+                تسجيل الدخول
+            </a>
+
+        </li>
+        <li>
+            <a href="~/Account/Register2">
+                <i class="glyphicon glyphicon-lock"></i>
+                الاشتراك
+            </a>
+
+        </li>
+    </ul>
+}
+

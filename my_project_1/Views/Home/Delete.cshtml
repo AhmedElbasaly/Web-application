@@ -1,0 +1,49 @@
+﻿@model my_project_1.Models.Applyforjob
+
+@{
+    ViewBag.Title = "حذف";
+    Layout = "~/Views/_main_LayoutPage1.cshtml";
+}
+
+<h2>الحذف</h2>
+
+<h3>هل تريد الحذف</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.job.Jobtital)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.job.Jobtital)
+        </dd>
+       
+        <dt>
+           الرسالة
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Massage)
+        </dd>
+
+        <dt>
+          التاريخ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplyDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-default" /> |
+            @Html.ActionLink("العودة الي القائمة", "Index")
+        </div>
+    }
+</div>

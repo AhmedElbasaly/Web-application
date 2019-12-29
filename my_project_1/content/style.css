@@ -1,0 +1,89 @@
+﻿@font-face{
+    font-family:myfont1;
+    src:url('font/GE_SS_Two_Bold.otf')
+}
+.font{
+    font-family:myfont1;
+    font-size:12px;
+    color:#454444;
+}
+
+body{
+    margin-top:70px;
+    font-family:myfont2;
+}
+
+@font-face {
+    font-family: myfont2;
+    src: url('font/DroidKufi-Regular.ttf');
+}
+.navbar-default {
+    background-color: #204e90;
+    border-color: #e7e7e7;
+    
+}
+.nav>li {
+    position: relative;
+    display: block;
+    height: 70px;
+    padding-top: 10px;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+    font-family:myfont1;
+}
+.navbar-default .navbar-nav>li>a:hover {
+    color:#808080;
+    
+}
+.myfooter{
+    background-color: #204e90;
+    padding:10px;
+    font-family:myfont1;
+   text-align:justify;
+
+}
+.myfooter h3{
+    font-size:16px;
+    margin-bottom:10px;
+    color:#454444;
+}
+.myfooter p{
+    color:#fff;
+}
+.myfooter ul li a{
+    color:white;
+    text-decoration:none;
+    font-size:10px;
+}
+.subfooter{
+    background-color:#204e90;
+    padding-top:10px;
+    font-family:myfont1;
+    text-align:center;
+    color:white;
+}
+#searchName {
+    width: 100px;
+    border: 3px solid #c7c6c6;
+    border-radius: 8px;
+    background-image: url('../Images/if_icon-111-search_314689 (2).png');
+    background-repeat: no-repeat;
+    background-color: white;
+    transition:Width 0.4s ease-in-out;
+    margin-top:3px;
+}
+#searchName:focus{
+    width:100%;
+}
+.image-size{
+    font-size:50px;
+}
+@media(min-width:992px){
+
+    .col-md-3{
+        width:23%;
+    }
+}
+

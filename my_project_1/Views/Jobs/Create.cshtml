@@ -1,0 +1,87 @@
+﻿@model my_project_1.Models.Job
+
+@{
+    ViewBag.Title = "انشاء";
+    Layout = "~/Views/_main_LayoutPage1.cshtml";
+}
+
+<h2>انشاء</h2>
+<script src="~/scriptes/ckeditor/ckeditor.js"></script>
+ 
+@using (Html.BeginForm("Create", "Jobs", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+
+        <div class="alert alert-danger" id="danger-div" style="display:none">
+            <span id="view-err"></span>
+        </div>
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Jobtital, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Jobtital, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Jobtital, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Jobcontent, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Jobcontent, new { htmlAttributes = new { @class = "form-control",@id= "Jobcontent" } })
+                @Html.ValidationMessageFor(model => model.Jobcontent, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.intJobimage, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               <input type="file" name="upload" id="jobimage" />
+                @Html.ValidationMessageFor(model => model.intJobimage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoryId, "نوع الوظيفة", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="انشاء" class="btn btn-default"  id="save" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scriptes{
+    
+    <script>
+    $(function () {
+        $("#save").click(function(){
+
+            if($("#jobimage").val()==""){
+
+                $("#danger-div").fadeIn();
+                $("#view-err").append("رجاء قم باختيار الصورة")
+
+                return false;
+
+            }
+        });
+    });
+    CKEDITOR.replace("Jobcontent");
+</script>
+    }
+
